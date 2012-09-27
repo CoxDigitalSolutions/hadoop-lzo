@@ -79,7 +79,7 @@ public class LzoIndexer {
     FileStatus fileStatus = fs.getFileStatus(lzoPath);
 
     // Recursively walk
-    if (fileStatus.isDir()) {
+    if (fileStatus.isDirectory()) {
       LOG.info(getNesting(nestingLevel) + "LZO Indexing directory " + lzoPath + "...");
       FileStatus[] statuses = fs.listStatus(lzoPath);
       for (FileStatus childStatus: statuses) {

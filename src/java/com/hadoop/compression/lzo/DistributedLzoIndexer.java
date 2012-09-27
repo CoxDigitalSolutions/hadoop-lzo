@@ -40,7 +40,7 @@ public class DistributedLzoIndexer extends Configured implements Tool {
       FileSystem fs = path.getFileSystem(getConf());
       FileStatus fileStatus = fs.getFileStatus(path);
 
-      if (fileStatus.isDir()) {
+      if (fileStatus.isDirectory()) {
         FileStatus[] children = fs.listStatus(path, pathFilter);
         for (FileStatus childStatus : children) {
           walkPath(childStatus.getPath(), pathFilter, accumulator);

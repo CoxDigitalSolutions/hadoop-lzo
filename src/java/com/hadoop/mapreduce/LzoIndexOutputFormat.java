@@ -6,6 +6,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.mapred.FileAlreadyExistsException;
 import org.apache.hadoop.mapreduce.JobContext;
+import org.apache.hadoop.mapreduce.JobStatus;
 import org.apache.hadoop.mapreduce.OutputCommitter;
 import org.apache.hadoop.mapreduce.OutputFormat;
 import org.apache.hadoop.mapreduce.RecordWriter;
@@ -28,7 +29,8 @@ public class LzoIndexOutputFormat extends OutputFormat<Path, LongWritable> {
       throws IOException, InterruptedException {
     return new OutputCommitter() {
       @Override public void setupJob(JobContext jobContext) throws IOException {}
-      @Override public void cleanupJob(JobContext jobContext) throws IOException {}
+      @Override public void abortJob(JobContext jobContext, JobStatus.State state) throws IOException {}
+      @Override public void commitJob(JobContext jobContext) throws IOException {}
       @Override public void setupTask(TaskAttemptContext taskAttemptContext) throws IOException {}
       @Override public void commitTask(TaskAttemptContext taskAttemptContext) throws IOException {}
       @Override public void abortTask(TaskAttemptContext taskAttemptContext) throws IOException {}
